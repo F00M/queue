@@ -50,21 +50,20 @@ class queue {
             arr[rear] = in;
         }
         T pop() {
-            if (front == -1) {
-                return;
+            if (front != -1) {
+                T deleted_element = arr[front];
+
+                if (front == rear) {
+                    front = -1;
+                    rear = -1;
+                }
+                else {
+                    front = (front+1 == arr_size) ? 0 : front + 1;
+                }
+
+                return deleted_element;
             }
 
-            T deleted_element = arr[front];
-
-            if (front == rear) {
-                front = -1;
-                rear = -1;
-            }
-            else {
-                front = (front+1 == arr_size) ? 0 : front + 1;
-            }
-
-            return deleted_element;
         }
 
         // accessors
