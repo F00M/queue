@@ -13,8 +13,9 @@
 //  void push(T in)
 //      Enqueues an element into the queue
 //
-//  void pop()
-//      Dequeues, or removes, an element from the queue
+//  T pop()
+//      Dequeues, or removes, an element from the queue and returns
+//      that element
 //
 // ACCESSORS:
 //  T queue_front()
@@ -48,10 +49,12 @@ class queue {
 
             arr[rear] = in;
         }
-        void pop() {
+        T pop() {
             if (front == -1) {
                 return;
             }
+
+            T deleted_element = arr[front];
 
             if (front == rear) {
                 front = -1;
@@ -60,6 +63,8 @@ class queue {
             else {
                 front = (front+1 == arr_size) ? 0 : front + 1;
             }
+
+            return deleted_element;
         }
 
         // accessors
